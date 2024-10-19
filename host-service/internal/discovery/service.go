@@ -21,7 +21,6 @@ func (s *Service) RegisterAgent(agentID, ipAddress string) error {
 	return nil
 }
 
-// Add this new method
 func (s *Service) GetAllAgents() map[string]string {
 	return s.agents
 }

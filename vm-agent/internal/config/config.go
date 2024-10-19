@@ -2,12 +2,12 @@ package config
 
 type Config struct {
 	HostServiceURL string
+	AgentPort      int
 }
 
 func LoadConfig() (*Config, error) {
-	// Load configuration from file or environment variables
-	// For simplicity, we'll hardcode the configuration here
 	return &Config{
 		HostServiceURL: "http://localhost:8092",
+		AgentPort:      8093,
 	}, nil
 }

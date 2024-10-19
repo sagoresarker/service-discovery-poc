@@ -27,9 +27,14 @@ func NewServer(cfg *config.Config) *Server {
 
 func (s *Server) Run() error {
 	http.HandleFunc("/register", s.handler.RegisterAgent)
-	// Add this new route
 	http.HandleFunc("/agents", s.handler.GetAllAgents)
+	http.HandleFunc("/health", s.healthHandler)
 
 	fmt.Printf("Server is running on port %d\n", s.cfg.Port)
 	return http.ListenAndServe(fmt.Sprintf(":%d", s.cfg.Port), nil)
+}
+
+func (s *Server) healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Host service is healthy"))
 }

@@ -34,10 +34,7 @@ func (h *Handler) RegisterAgent(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
-// Add this new handler method
 func (h *Handler) GetAllAgents(w http.ResponseWriter, r *http.Request) {
 	agents := h.service.GetAllAgents()
-
-	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(agents)
 }
