@@ -1,0 +1,22 @@
+[Unit]
+Description=Agent Service
+ConditionPathExists=/root/agent
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=poridhi
+
+WorkingDirectory=/root/agent
+
+ExecStart=/root/agent/agent
+Restart=on-failure
+RestartSec=10
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=agent
+
+[Install]
+WantedBy=multi-user.target
