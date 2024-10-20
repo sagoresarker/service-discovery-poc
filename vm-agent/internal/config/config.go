@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"strconv"
+
 	"github.com/sagoresarker/svc-discovery-vm-poc/common"
 )
 
@@ -12,8 +13,6 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-	common.InitEnv()
-
 	hostIP := common.GetHostIP()
 	hostPort := common.GetHostPort()
 	agentPort := common.GetAgentPort()
